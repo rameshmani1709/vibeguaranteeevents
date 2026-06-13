@@ -1,0 +1,384 @@
+/* ============================================================
+   Vibe Guarantee Events — custom component styles
+   Tailwind (Play CDN) handles utilities; this file defines the
+   bespoke components referenced across the pages.
+   ============================================================ */
+
+:root {
+  --navy: #0A1F44;
+  --navy-deep: #061230;
+  --navy-700: #102a55;
+  --gold: #D4AF37;
+  --gold-light: #E9C766;
+  --gold-dark: #B8932F;
+  --paper: #F7F4EC;
+  --slate: #5b6677;
+}
+
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+/* ------------------------------------------------------------
+   HEADER
+   Transparent over the hero, solid navy once scrolled.
+   ------------------------------------------------------------ */
+#siteHeader {
+  transition: background-color .35s ease, padding .35s ease,
+              box-shadow .35s ease, backdrop-filter .35s ease;
+}
+#siteHeader.scrolled {
+  background: rgba(6, 18, 48, .92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .28);
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  border-bottom: 1px solid rgba(212, 175, 55, .18);
+}
+
+/* ------------------------------------------------------------
+   NAV LINKS
+   ------------------------------------------------------------ */
+.nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, .82);
+  font-weight: 500;
+  font-size: .95rem;
+  letter-spacing: .01em;
+  padding: .25rem 0;
+  transition: color .25s ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width .28s ease;
+}
+.nav-link:hover { color: #fff; }
+.nav-link:hover::after { width: 100%; }
+.nav-link.active { color: var(--gold-light); }
+.nav-link.active::after { width: 100%; }
+
+/* ------------------------------------------------------------
+   BUTTONS
+   ------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  padding: .85rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: .95rem;
+  line-height: 1;
+  letter-spacing: .01em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform .2s ease, box-shadow .25s ease,
+              background-color .25s ease, color .25s ease,
+              border-color .25s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 55%, var(--gold-dark));
+  color: var(--navy-deep);
+  box-shadow: 0 10px 24px rgba(212, 175, 55, .28);
+}
+.btn-gold:hover { box-shadow: 0 14px 30px rgba(212, 175, 55, .42); }
+
+.btn-navy {
+  background: var(--navy);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(10, 31, 68, .25);
+}
+.btn-navy:hover { background: var(--navy-700); }
+
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .35);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, .08);
+}
+
+/* ------------------------------------------------------------
+   FORM FIELDS
+   ------------------------------------------------------------ */
+.form-card {
+  background: #fff;
+  border: 1px solid rgba(10, 31, 68, .08);
+  border-radius: 1.5rem;
+  box-shadow: 0 24px 60px rgba(10, 31, 68, .08);
+  padding: 2rem;
+}
+@media (min-width: 640px) { .form-card { padding: 2.5rem; } }
+
+.field-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: .5rem;
+}
+.field-label .req { color: var(--gold-dark); margin-left: .15rem; }
+
+.field {
+  width: 100%;
+  background-color: #f7f8fa;
+  border: 1.5px solid rgba(10, 31, 68, .10);
+  border-radius: .85rem;
+  padding: .85rem 1rem;
+  font-family: inherit;
+  font-size: .95rem;
+  color: var(--navy);
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.field::placeholder { color: #9aa3b2; }
+.field:hover { border-color: rgba(10, 31, 68, .2); }
+.field:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, .18);
+}
+.field:focus::placeholder { color: #b8bfca; }
+
+textarea.field { resize: vertical; min-height: 140px; line-height: 1.55; }
+
+select.field {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230A1F44' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+select.field:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23B8932F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Invalid state after a submit attempt */
+.field.invalid {
+  border-color: #e0526b;
+  background-color: #fdf3f5;
+}
+.field.invalid:focus { box-shadow: 0 0 0 4px rgba(224, 82, 107, .16); }
+
+/* ------------------------------------------------------------
+   EYEBROW + SPARK
+   ------------------------------------------------------------ */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .26em;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+}
+.spark {
+  display: inline-block;
+  width: 1.6rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* ------------------------------------------------------------
+   GOLD ACCENTS
+   ------------------------------------------------------------ */
+.gold-text {
+  background: linear-gradient(120deg, var(--gold-light), var(--gold) 50%, var(--gold-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.gold-rule {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.gold-rule-l { height: 2px; border-radius: 2px; }
+
+/* ------------------------------------------------------------
+   LUX CARD
+   ------------------------------------------------------------ */
+.lux-card {
+  background: #fff;
+  border: 1px solid rgba(10, 31, 68, .08);
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 40px rgba(10, 31, 68, .06);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.lux-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(10, 31, 68, .12);
+  border-color: rgba(212, 175, 55, .35);
+}
+
+/* ------------------------------------------------------------
+   CORNER FRAME (image)
+   ------------------------------------------------------------ */
+.corner-frame { position: relative; }
+.corner-frame::before,
+.corner-frame::after {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--gold);
+  z-index: 2;
+}
+.corner-frame::before {
+  top: -14px; left: -14px;
+  border-right: 0; border-bottom: 0;
+  border-top-left-radius: 12px;
+}
+.corner-frame::after {
+  bottom: -14px; right: -14px;
+  border-left: 0; border-top: 0;
+  border-bottom-right-radius: 12px;
+}
+
+/* ------------------------------------------------------------
+   GALLERY ITEM
+   ------------------------------------------------------------ */
+.gallery-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.gallery-item img {
+  transition: transform .6s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 18, 48, .85), transparent 55%);
+}
+.gallery-item .cap {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 2;
+  color: #fff;
+  transform: translateY(6px);
+  opacity: .92;
+  transition: transform .35s ease, opacity .35s ease;
+}
+.gallery-item:hover .cap { transform: translateY(0); opacity: 1; }
+
+/* ------------------------------------------------------------
+   BURGER (mobile menu toggle)
+   ------------------------------------------------------------ */
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .25s ease;
+}
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ------------------------------------------------------------
+   MOBILE MENU (collapsed by default; .open expands)
+   ------------------------------------------------------------ */
+#mobileMenu {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: max-height .35s ease, opacity .3s ease, transform .3s ease;
+}
+#mobileMenu.open {
+  max-height: 28rem;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ------------------------------------------------------------
+   REVEAL ON SCROLL
+   ------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .7s ease, transform .7s ease;
+  transition-delay: calc(var(--d, 0) * 90ms);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ------------------------------------------------------------
+   KEN BURNS (hero image)
+   ------------------------------------------------------------ */
+.kenburns { animation: kenburns 22s ease-in-out infinite alternate; }
+@keyframes kenburns {
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.12) translate(-1.5%, -1.5%); }
+}
+
+/* Rotating guarantee seal */
+.seal { animation: spin 38s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .kenburns, .seal { animation: none; }
+}
+
+/* ------------------------------------------------------------
+   WHATSAPP FLOAT
+   ------------------------------------------------------------ */
+.wa-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  width: 56px;
+  height: 56px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  box-shadow: 0 10px 26px rgba(37, 211, 102, .45);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.wa-float:hover { transform: scale(1.08); box-shadow: 0 14px 32px rgba(37, 211, 102, .6); }
