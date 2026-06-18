@@ -4,4 +4,15 @@
     <loc>https://vibeguaranteeevents.com/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+  <loc>https://vibeguaranteeevents.com/about.html</loc>
+</url>
+
+<url>
+  <loc>https://vibeguaranteeevents.com/services.html</loc>
+</url>
+
+<url>
+  <loc>https://vibeguaranteeevents.com/contact.html</loc>
+</url>
 </urlset>
